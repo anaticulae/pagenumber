@@ -43,10 +43,12 @@ def work(
         pages=pages,
     )
     detected = pagenumber.strategy.numbers.determine_pagenumbers(navigators)
-    improved = pagenumber.strategy.magic.pagenumbers_fill(
-        pagenumbers=detected,
-        pdflength=navigators[-1].page if navigators else 256,
-    )
+    improved = dict()
+    if navigators:
+        improved = pagenumber.strategy.magic.pagenumbers_fill(
+            pagenumbers=detected,
+            pdflength=navigators[-1].page,
+        )
     detected_dumped = serializeraw.dump_pagenumbers(detected)
     improved_dumped = utila.yaml_dump(improved)
     return detected_dumped, improved_dumped
