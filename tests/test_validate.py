@@ -43,7 +43,7 @@ RESOURCES = [
     power.PAPER18_PDF,
     power.TECH024_PDF,
 ]
-PAGENUMBERS = [pytest.param(pdf, id=utila.file_name(pdf)) for pdf in RESOURCES]
+PAGENUMBERS = utilatest.test_resources(RESOURCES)
 
 
 @utilatest.nightly
