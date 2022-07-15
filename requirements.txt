@@ -11,10 +11,6 @@ iamraw>=4.79.2<5.0.0
 utila>=2.83.0<3.0.0
 
 configo>=0.20.0<1.0.0
-geostrat>=1.4.1<2.0.0
 
-konrad>=0.10.1<1.0.0
-elements>=0.21.2<1.0.0
-
-tablero>=0.9.4<1.0.0
-german>=1.26.3<2.0.0
+# TODO: MOVE IS PAGE NUMBER BACK TO THIS PACKAKGE?
+elements>=0.21.3<1.0.0
