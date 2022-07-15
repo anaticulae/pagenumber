@@ -12,13 +12,13 @@ import power
 from utilatest import mp  # pylint:disable=W0611
 from utilatest import td  # pylint:disable=W0611
 
-import pagenumbers
+import pagenumber
 from tests.fixtures.simple import simple  # pylint:disable=W0611
 from tests.fixtures.simple import simple_navigator  # pylint:disable=W0611
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
-PACKAGE = pagenumbers.PROCESS
+PACKAGE = pagenumber.PROCESS
 
 RESOURCES = [
     (power.DISS218_PDF, '0:100'),

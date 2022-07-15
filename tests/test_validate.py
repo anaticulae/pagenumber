@@ -15,10 +15,10 @@ import serializeraw
 import utila
 import utilatest
 
-import pagenumbers
+import pagenumber
 import tests
 
-ARCHIVE = utila.join(pagenumbers.ROOT, 'tests/expected', exist=True)
+ARCHIVE = utila.join(pagenumber.ROOT, 'tests/expected', exist=True)
 
 RESOURCES = [
     power.BACHELOR085_PDF,

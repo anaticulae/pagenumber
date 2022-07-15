@@ -9,7 +9,7 @@
 
 import utila
 
-import pagenumbers
+import pagenumber
 
 DESCRIPTION = 'TODO'
 
@@ -28,15 +28,15 @@ WORKPLAN = [
 def main():
     utila.featurepack(
         workplan=WORKPLAN,
-        root=pagenumbers.ROOT,
-        featurepackage='pagenumbers.feature',
+        root=pagenumber.ROOT,
+        featurepackage='pagenumber.feature',
         config=utila.FeaturePackConfig(
             description=DESCRIPTION,
             multiprocessed=True,
-            name=pagenumbers.PROCESS,
+            name=pagenumber.PROCESS,
             pages=True,
             rename=rename,
-            version=pagenumbers.__version__,
+            version=pagenumber.__version__,
         ),
     )
 

@@ -27,8 +27,8 @@ import typing
 import serializeraw
 import utila
 
-import pagenumbers.strategy.magic
-import pagenumbers.strategy.numbers
+import pagenumber.strategy.magic
+import pagenumber.strategy.numbers
 
 
 def work(
@@ -42,8 +42,8 @@ def work(
         textpositions=textpositions,
         pages=pages,
     )
-    detected = pagenumbers.strategy.numbers.determine_pagenumbers(navigators)
-    improved = pagenumbers.strategy.magic.pagenumbers_fill(
+    detected = pagenumber.strategy.numbers.determine_pagenumbers(navigators)
+    improved = pagenumber.strategy.magic.pagenumbers_fill(
         pagenumbers=detected,
         pdflength=navigators[-1].page if navigators else 256,
     )

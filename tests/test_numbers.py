@@ -16,7 +16,7 @@ import pytest
 import serializeraw
 import utila
 
-import pagenumbers.strategy.numbers
+import pagenumber.strategy.numbers
 
 
 def test_simple_example(simple):
@@ -27,21 +27,21 @@ def test_simple_example(simple):
 
 def test_footer_simple(simple):
     navigator, _ = simple
-    result = pagenumbers.strategy.numbers.footer(navigator)
+    result = pagenumber.strategy.numbers.footer(navigator)
     # cluster with page numbers
     assert len(result) == 1
 
 
 def test_header_simple(simple):
     navigator, _ = simple
-    result = pagenumbers.strategy.numbers.header(navigator)
+    result = pagenumber.strategy.numbers.header(navigator)
     assert not result
 
 
 def test_footer_docu027():
     source = power.link(power.DOCU027_PDF)
     navigators = serializeraw.create_pagetextnavigators_frompath(source)
-    result = pagenumbers.strategy.numbers.footer(
+    result = pagenumber.strategy.numbers.footer(
         navigators,
         numbers_only=False,
     )
@@ -53,7 +53,7 @@ def test_footer_docu027():
 def test_header_docu027():
     source = power.link(power.DOCU027_PDF)
     navigators = serializeraw.create_pagetextnavigators_frompath(source)
-    result = pagenumbers.strategy.numbers.footer(navigators)
+    result = pagenumber.strategy.numbers.footer(navigators)
     # Example:
     # (5,
     # (BoundingBox(x_bottom=72.00, y_bottom=746.33, x_top=336.99, y_top=758.84),
@@ -65,9 +65,9 @@ def test_header_docu027():
 def test_pagenumbers_docu027():
     source = power.link(power.DOCU027_PDF)
     navigators = serializeraw.create_pagetextnavigators_frompath(source)
-    result = pagenumbers.strategy.numbers.footer(navigators)
+    result = pagenumber.strategy.numbers.footer(navigators)
     expected = ['i', 'ii'] + utila.ranged_list(start=1, end=24)
-    numbers = pagenumbers.strategy.numbers.pagenumbers(result)
+    numbers = pagenumber.strategy.numbers.pagenumbers(result)
     # yapf:disable
     assert any(item for item in numbers if item.direction == iamraw.PageNumberOrientation.LEFT)
     assert any(item for item in numbers if item.direction == iamraw.PageNumberOrientation.RIGHT)
@@ -79,18 +79,18 @@ def test_pagenumbers_docu027():
 
 
 def test_pagenumbers_simple(simple_navigator):
-    result = pagenumbers.strategy.numbers.footer(simple_navigator)
+    result = pagenumber.strategy.numbers.footer(simple_navigator)
     # single page
-    numbers = pagenumbers.strategy.numbers.pagenumbers(result)
+    numbers = pagenumber.strategy.numbers.pagenumbers(result)
     assert isinstance(numbers, typing.Iterable), numbers
     assert numbers
 
 
 @pytest.fixture
 def pagenumbers_simple(simple_navigator):
-    result = pagenumbers.strategy.numbers.footer(simple_navigator)
+    result = pagenumber.strategy.numbers.footer(simple_navigator)
     # single page
-    numbers = pagenumbers.strategy.numbers.pagenumbers(result)
+    numbers = pagenumber.strategy.numbers.pagenumbers(result)
     assert isinstance(numbers, typing.Iterable), numbers
     assert numbers
     return numbers
@@ -104,7 +104,7 @@ def test_numbers_docu027_without_title():
     """
     source = power.link(power.DOCU027_PDF, folder='notitle')
     navigator = serializeraw.create_pagetextnavigators_frompath(source)
-    numbers = pagenumbers.strategy.numbers.determine_pagenumbers(navigator)
+    numbers = pagenumber.strategy.numbers.determine_pagenumbers(navigator)
     numbers = sorted(numbers)
     expected_pdfpages = utila.ranged_list(1, 26)
     current = [item[0] for item in numbers]

@@ -18,7 +18,7 @@ ROOT = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(ROOT, 'README.md'), encoding='utf8') as fp:
     README = fp.read()
 
-with open(os.path.join(ROOT, 'pagenumbers/__init__.py'), encoding='utf8') as fp:
+with open(os.path.join(ROOT, 'pagenumber/__init__.py'), encoding='utf8') as fp:
     VERSION = re.search(r'__version__ = \'(.*?)\'', fp.read()).group(1)
 
 with open(os.path.join(ROOT, "requirements.txt"), encoding='utf8') as fp:
@@ -33,9 +33,9 @@ if __name__ == "__main__":
         description='get the pages',
         install_requires=REQUIRES,
         long_description=README,
-        name='pagenumbers',
+        name='pagenumber',
         platforms='any',
-        url='https://dev.package.checkitweg.de/pagenumbers',
+        url='https://dev.package.checkitweg.de/pagenumber',
         version=VERSION,
         zip_safe=False,  # create 'zip'-file if True. Don't do it!
         classifiers=[
@@ -43,11 +43,11 @@ if __name__ == "__main__":
             'Programming Language :: Python :: 3.8',
         ],
         packages=[
-            'pagenumbers',
-            'pagenumbers.feature',
-            'pagenumbers.strategy',
+            'pagenumber',
+            'pagenumber.feature',
+            'pagenumber.strategy',
         ],
         entry_points={
-            'console_scripts': ['pagenumbers = pagenumbers.cli:main'],
+            'console_scripts': ['pagenumber = pagenumber.cli:main'],
         },
     )

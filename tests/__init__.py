@@ -10,8 +10,8 @@
 import power
 import utilatest
 
-import pagenumbers
+import pagenumber
 
-power.setup(pagenumbers.ROOT)
+power.setup(pagenumber.ROOT)
 
-run, fail = utilatest.create_cli_runner(pagenumbers)
+run, fail = utilatest.create_cli_runner(pagenumber)
