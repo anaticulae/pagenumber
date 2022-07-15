@@ -12,7 +12,6 @@ import typing
 import configo
 import elements
 import iamraw
-import serializeraw
 import texmex
 import utila
 
@@ -47,31 +46,6 @@ def determine_pagenumbers(navigators) -> list:
         else:
             numbers.extend(detected_rotated_roated)
     return pagenumbers(numbers)
-
-
-def rotate_ifrequired(navigators, sizeandborders=None):
-    if not sizeandborders:
-        return navigators
-    if isinstance(sizeandborders, str):
-        if not utila.exists(sizeandborders):
-            utila.error('missing size and borders: pagenumber')
-            return navigators
-        pages = tuple(page.page for page in navigators)
-        sizeandborders = serializeraw.load_pageborders(
-            content=sizeandborders,
-            pages=pages,
-        )
-    result = []
-    for ptn in navigators:
-        pagesize = utila.select_page(sizeandborders, page=ptn.page)
-        if pagesize is None:
-            # empty navigator or only a part of ptn is extracted
-            continue
-        pagesize = pagesize.size
-        if iswidepage(pagesize):
-            ptn = texmex.rotate_left(ptn)
-        result.append(ptn)
-    return result
 
 
 def header(
