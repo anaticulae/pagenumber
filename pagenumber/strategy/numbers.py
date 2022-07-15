@@ -11,6 +11,7 @@ import typing
 
 import configo
 import elements
+import elements.pagenumber
 import iamraw
 import texmex
 import utila
@@ -148,25 +149,15 @@ def search_pagenumbers(
         # remove gaps: 10 4
         clean_number = clean_number.replace(' ', '')
         # Page 6 of 16
-        clean_number = COMPLEX_PAGENUMBER.sub(r'\2', clean_number)
+        if matched := COMPLEX_PAGENUMBER.match(clean_number):
+            clean_number = matched[3] or matched[3 + 4]
         # TODO: DELIVER RAW DATA FOR FOOTER PAGES STRATEGY DETECTION
         item = (item.bounding, clean_number, pagenumber)
         pagecontent.append(item)
     return pagecontent
 
 
-COMPLEX_PAGENUMBER = utila.compiles(r"""
-    \d{0,3}
-    [ ]{0,3}
-    (page|seite){0,1}
-    [ ]{0,3}
-    (\d{1,3})
-    [ ]{0,3}
-    (of|von)
-    [ ]{0,3}
-    \d{0,3}
-    .{0,5}
-""")
+COMPLEX_PAGENUMBER = elements.pagenumber.COMPLEX_PAGENUMBER
 
 POTENTIAL_PAGE_NUMBERS_PER_PER = configo.HV_INT_PLUS(default=7)
 # ( ) is required to avoid losing white space, because there are required
