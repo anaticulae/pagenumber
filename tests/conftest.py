@@ -8,6 +8,7 @@
 # =============================================================================
 
 import genex
+import genex.config
 import power
 from utilatest import mp  # pylint:disable=W0611
 from utilatest import td  # pylint:disable=W0611
@@ -25,7 +26,7 @@ RESOURCES = [
     (power.DISS287_PDF, '0:100'),
     (power.DISS406_PDF, '0:75,100:150'),
     (power.MASTER116_PDF, '50:117'),
-    genex.todo(power.DOCU007_PDF, tablero=True),
+    genex.todo(power.DOCU007_PDF, tablero=True, rawmaker=genex.config.CONFIG),
     power.BACHELOR085_PDF,
     power.BACHELOR111_PDF,
     power.DISS148_PDF,
@@ -54,11 +55,18 @@ def pytest_sessionstart(session):  # pylint:disable=W0613
     power.run()
 
 
+CONFIG = genex.config.CONFIG.strip()
+RAWMAKER = f'--text --fonts --border --line --horizontals {CONFIG}'
+# disable oneline extraction
+ONELINE = None
+
+
 def extract(resources):
     genex.extract(
         resources,
+        rawmaker=RAWMAKER,
+        oneline=ONELINE,
         worker=WORKER,
-        base=power.REPOSITORY,
     )
 
 
@@ -70,6 +78,8 @@ RESOURCES_NOTITLE = [
 def extract_notitle(resources):
     genex.extract_removepages(
         resources,
+        rawmaker=RAWMAKER,
+        oneline=ONELINE,
         removepages='0',
         folder='notitle',
         pages='0:10',
