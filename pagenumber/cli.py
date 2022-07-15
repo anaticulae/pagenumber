@@ -20,15 +20,22 @@ WORKPLAN = [
             utila.ResultFile(producer='rawmaker', name='text_text'),
             utila.ResultFile(producer='rawmaker', name='text_positions'),
         ],
-        output=('pagenumbers', 'magic'),
+        output=('result',),
+    ),
+    utila.create_step(
+        'magic',
+        inputs=[
+            utila.ResultFile(producer='pagenumber', name='result_result'),
+        ],
+        output=('magic',),
     ),
     utila.create_step(
         'legacy',
         inputs=[
-            utila.ResultFile(producer='pagenumber', name='result_pagenumbers'),
-            utila.ResultFile(producer='pagenumber', name='result_magic'),
+            utila.ResultFile(producer='pagenumber', name='result_result'),
+            utila.ResultFile(producer='pagenumber', name='magic_magic'),
         ],
-        output=('pagenumbers', 'magic'),
+        output=('pagenumber', 'magic'),
     ),
 ]
 
@@ -55,7 +62,7 @@ def rename(path):
         return path
     path = utila.rreplace(
         path,
-        pattern='pagenumber__legacy_pagenumbers',
+        pattern='pagenumber__legacy_pagenumber',
         replace='groupme__pagenumbers_pagenumbers',
     )
     path = utila.rreplace(

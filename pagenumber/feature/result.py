@@ -22,12 +22,9 @@ Required API:
     # before/ after method to determine items
 """
 
-import typing
-
 import serializeraw
 import utila
 
-import pagenumber.strategy.magic
 import pagenumber.strategy.numbers
 
 
@@ -35,7 +32,7 @@ def work(
     text: str,
     textpositions: str,
     pages: tuple = None,
-) -> typing.Tuple[str, str]:
+) -> str:
     utila.call('numbers')
     navigators = serializeraw.ptn_fromfile(
         text=text,
@@ -43,12 +40,5 @@ def work(
         pages=pages,
     )
     detected = pagenumber.strategy.numbers.determine_pagenumbers(navigators)
-    improved = dict()
-    if navigators:
-        improved = pagenumber.strategy.magic.pagenumbers_fill(
-            pagenumbers=detected,
-            pdflength=navigators[-1].page,
-        )
     detected_dumped = serializeraw.dump_pagenumbers(detected)
-    improved_dumped = utila.yaml_dump(improved)
-    return detected_dumped, improved_dumped
+    return detected_dumped
