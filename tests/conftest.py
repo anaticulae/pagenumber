@@ -40,6 +40,7 @@ RESOURCES = [
     power.HC_DISS193,
     power.HOME007_PDF,
     power.HOME009B_PDF,
+    power.HOME019B_PDF,
     power.HOME019_PDF,
     power.MASTER049_PDF,
     power.MASTER072_PDF,
