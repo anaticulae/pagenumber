@@ -24,7 +24,7 @@ PAGENUMBERS = utilatest.test_resources(tests.conftest.RESOURCES)
 
 @utilatest.nightly
 @pytest.mark.parametrize('source', PAGENUMBERS)
-def test_validate_pagenumbers(source, mp, td):
+def test_validate(source, mp, td):
     Evaluate(
         source=source,
         workdir=td.tmpdir,
@@ -59,5 +59,5 @@ class Evaluate(utilatest.BaseLiner):
         collected = {pdfpage: '' for pdfpage in range(maxpage)}
         for item in value:
             collected[item.pdfpage] = str(item.detected)
-        result: str = utila.NEWLINE.join(collected.values())
+        result: str = utila.NEWLINE.join(collected.values()).rstrip()
         return result
