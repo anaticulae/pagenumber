@@ -258,6 +258,9 @@ def pagenumbers(clusters: typing.List[Cluster]) -> list:
     return result
 
 
+DUPLICATED_PAGE_NUMBER_MAX = configo.HV_PERCENT_PLUS(default=75)
+
+
 def already_done(cluster, result) -> bool:
     """Check that page number is not detected twice on the same page.
 
@@ -276,7 +279,7 @@ def already_done(cluster, result) -> bool:
     if not dones:
         return False
     rate = utila.rate_rel(len(dones), len(cluster))
-    if rate > 0.75:
+    if rate > DUPLICATED_PAGE_NUMBER_MAX:
         utila.debug(f'multiple page number cluster on page: {dones}')
         return True
     return False
