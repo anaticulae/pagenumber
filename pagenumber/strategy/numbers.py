@@ -146,7 +146,7 @@ def search_pagenumbers(
         # 32/54
         clean_number = clean_number.split('/')[0]
         # remove gaps: 10 4
-        clean_number = clean_number.replace(' ', ' ')
+        clean_number = clean_number.replace(' ', '')
         # Page 6 of 16
         clean_number = COMPLEX_PAGENUMBER.sub(r'\2', clean_number)
         # TODO: DELIVER RAW DATA FOR FOOTER PAGES STRATEGY DETECTION
