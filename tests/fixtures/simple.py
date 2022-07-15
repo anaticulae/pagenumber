@@ -1,0 +1,44 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2019-2022 by Helmut Konrad Fahrendholz. All rights reserved.
+# This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+
+import iamraw
+import power
+import pytest
+import serializeraw
+import texmex
+
+DOCU007 = power.link(power.DOCU007_PDF)
+SIMPLE_PAGESIZE = iamraw.path.sizeandborder(DOCU007)
+SIMPLE_HORIZONTAL = iamraw.path.horizontals(DOCU007)
+SIMPLE_TEXT_POSITION = iamraw.path.textposition(DOCU007)
+SIMPLE_TEXT = iamraw.path.text(DOCU007)
+
+
+@pytest.fixture
+def simple():
+    pagesize = serializeraw.load_pageborders(SIMPLE_PAGESIZE)
+    horizontals = serializeraw.load_horizontals(SIMPLE_HORIZONTAL)
+    position = serializeraw.load_textpositions(SIMPLE_TEXT_POSITION)
+    document = serializeraw.load_document(SIMPLE_TEXT)
+
+    assert pagesize
+    assert horizontals
+    assert position
+
+    navigator = texmex.create_pagetextnavigators(
+        text=document,
+        textpositions=position,
+    )
+    return navigator, horizontals
+
+
+@pytest.fixture
+def simple_navigator(simple):  #pylint:disable=W0621
+    navigator, _ = simple
+    return navigator
