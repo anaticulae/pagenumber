@@ -7,14 +7,15 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-iamraw>=4.79.2<5.0.0
-utila>=2.83.0<3.0.0
+utilatest==0.15.1
 
-configo>=0.20.0<1.0.0
-geostrat>=1.4.1<2.0.0
+# reference to test data
+power==2.10.0
+hardcore>=0.5.2<1.0.0
 
-konrad>=0.10.1<1.0.0
-elements>=0.21.2<1.0.0
+# test data generator
+genex==0.30.0
 
-tablero>=0.9.4<1.0.0
-german>=1.26.3<2.0.0
+# ensure that test data is generated with the right version of rawmaker
+rawmaker==2.37.6
+cleanup>=0.1.5<1.0.0
