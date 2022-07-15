@@ -9,7 +9,6 @@
 
 import functools
 
-import power
 import pytest
 import serializeraw
 import utila
@@ -20,30 +19,7 @@ import tests
 
 ARCHIVE = utila.join(pagenumber.ROOT, 'tests/expected', exist=True)
 
-RESOURCES = [
-    power.BACHELOR085_PDF,
-    power.BACHELOR111_PDF,
-    power.DISS148_PDF,
-    power.DISS170B_PDF,
-    power.DISS218_PDF,
-    power.DISS287_PDF,
-    power.DISS406_PDF,
-    power.DISS480_PDF,
-    power.HC_DISS128,
-    power.HC_DISS148,
-    power.HC_DISS166,
-    power.HC_DISS171,
-    power.HC_DISS193,
-    power.MASTER049_PDF,
-    power.MASTER072_PDF,
-    power.MASTER091A_PDF,
-    power.MASTER110_PDF,
-    power.MASTER127_PDF,
-    power.PAPER14B_PDF,
-    power.PAPER18_PDF,
-    power.TECH024_PDF,
-]
-PAGENUMBERS = utilatest.test_resources(RESOURCES)
+PAGENUMBERS = utilatest.test_resources(tests.conftest.RESOURCES)
 
 
 @utilatest.nightly
