@@ -259,10 +259,12 @@ def pagenumbers(clusters: typing.List[Cluster]) -> list:
 
 
 def already_done(cluster, result) -> bool:
-    """Check that page number is not detect twice on the same page.
+    """Check that page number is not detected twice on the same page.
 
-    This can happen when headline number is also detected as a page number.
-    See master049.
+    This can happen when headline number is also detected as a page
+    number.
+
+    See: master049
     """
     pages = set(item.pdfpage for item in result)
     dones = []
