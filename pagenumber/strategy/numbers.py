@@ -322,7 +322,8 @@ def multiple_number_perpage(cluster) -> bool:
 
 def valid_cluster(cluster) -> bool:
     pages = []
-    for ___, (_, number, __) in cluster:
+    for item in cluster:
+        number = item[1][1]
         pages.append(parse_pagenumber(number))
     # pages = utila.notnone(pages)
     # diff=2 to support left right page numbers
