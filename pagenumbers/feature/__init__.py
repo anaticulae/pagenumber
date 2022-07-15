@@ -6,10 +6,3 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-
-[project]
-short = pagenumbers
-name = get the pages
-
-[release]
-fail_on_finding = True
