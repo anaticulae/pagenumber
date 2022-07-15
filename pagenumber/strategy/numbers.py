@@ -320,11 +320,24 @@ def multiple_number_perpage(cluster) -> bool:
     return False
 
 
+UNIQUE_RATE_MIN = configo.HV_PERCENT_PLUS(default=75)
+
+
 def valid_cluster(cluster) -> bool:
     pages = []
     for item in cluster:
         number = item[1][1]
         pages.append(parse_pagenumber(number))
+    if not pages:
+        return False
+    unique_rate = utila.rate_rel(
+        set(pages),
+        pages,
+    )
+    if unique_rate < UNIQUE_RATE_MIN:
+        return False
+    # remove roman numbers to allow grouping
+    pages = [item for item in pages if isinstance(item, int)]
     # pages = utila.notnone(pages)
     # diff=2 to support left right page numbers
     grouped = utila.groupby_diff(utila.notnone(pages), maxdiff=5)
@@ -342,6 +355,6 @@ def valid_cluster(cluster) -> bool:
 def parse_pagenumber(number: str) -> int:
     if utila.isarabic(number):
         return int(number)
-    # if utila.isroman(number):
-    #     return utila.arabic(number)
+    if utila.isroman(number):
+        return number
     return None
