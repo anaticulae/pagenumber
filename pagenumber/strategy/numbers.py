@@ -320,7 +320,7 @@ def multiple_number_perpage(cluster) -> bool:
     return False
 
 
-UNIQUE_RATE_MIN = configo.HV_PERCENT_PLUS(default=75)
+UNIQUE_RATE_MIN = configo.HV_PERCENT_PLUS(default=70)
 
 
 def valid_cluster(cluster) -> bool:
