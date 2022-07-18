@@ -22,16 +22,15 @@ pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 PACKAGE = pagenumber.PROCESS
 
 RESOURCES = [
-    (power.DISS218_PDF, '0:100'),
-    (power.DISS287_PDF, '0:100'),
-    (power.DISS406_PDF, '0:75,100:150'),
-    (power.MASTER116_PDF, '50:117'),
     genex.todo(power.DOCU007_PDF, tablero=True, rawmaker=genex.config.CONFIG),
     power.BACHELOR045A_PDF,
     power.BACHELOR085_PDF,
     power.BACHELOR111_PDF,
     power.DISS148_PDF,
     power.DISS170B_PDF,
+    power.DISS218_PDF,
+    power.DISS287_PDF,
+    power.DISS406_PDF,
     power.DISS480_PDF,
     power.DOCU027_PDF,
     power.HC_DISS128,
@@ -53,6 +52,7 @@ RESOURCES = [
     power.MASTER072_PDF,
     power.MASTER091A_PDF,
     power.MASTER110_PDF,
+    power.MASTER116_PDF,
     power.MASTER127_PDF,
     power.PAPER14B_PDF,
     power.PAPER18_PDF,
