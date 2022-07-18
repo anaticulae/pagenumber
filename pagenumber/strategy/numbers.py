@@ -132,8 +132,8 @@ def search_pagenumbers(
 ) -> list:
     pagecontent = []
     for item in footercontent:
-        text = item.text.strip()
-        if utila.rectangle_size(item.bounding) > area_max:
+        text, bounding = item.text.strip(), item.bounding
+        if utila.rectangle_size(bounding) > area_max:
             # ignore to big items
             continue
         if remove_empty and not text:
@@ -142,19 +142,27 @@ def search_pagenumbers(
         if numbers_only and not elements.ispagenumber(text):
             # remove non numeric items
             continue
-        # support -1-, -2-, ...
-        clean_number = text.replace('-', '', 2).strip()
-        # 32/54
-        clean_number = clean_number.split('/')[0]
-        # remove gaps: 10 4
-        clean_number = clean_number.replace(' ', '')
-        # Page 6 of 16
-        if matched := COMPLEX_PAGENUMBER.match(clean_number):
-            clean_number = matched[3] or matched[3 + 4]
+        cleaned = cleanup_number(text)
+        if matched := COMPLEX_PAGENUMBER.match(cleaned):
+            cleaned = matched[3] or matched[3 + 4]
         # TODO: DELIVER RAW DATA FOR FOOTER PAGES STRATEGY DETECTION
-        item = (item.bounding, clean_number, pagenumber)
+        item = (
+            bounding,
+            cleaned,
+            pagenumber,
+        )
         pagecontent.append(item)
     return pagecontent
+
+
+def cleanup_number(text: str) -> str:
+    # support -1-, -2-, ...
+    clean = text.replace('-', '', 2).strip()
+    # 32/54
+    clean = clean.split('/')[0]
+    # remove gaps: 10 4
+    clean = clean.replace(' ', '')
+    return clean
 
 
 COMPLEX_PAGENUMBER = elements.pagenumber.COMPLEX_PAGENUMBER
