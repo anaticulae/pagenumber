@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.2.1
+
+### Feature
+
+* decrease unique rate (dde2752f86bf)
+
 ## v0.2.0
 
 ### Feature
