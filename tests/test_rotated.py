@@ -10,10 +10,12 @@
 import power
 import serializeraw
 import utila
+import utilatest
 
 import pagenumber.strategy.numbers
 
 
+@utilatest.requires(power.MASTER116_PDF)
 def test_rotated_master116page102():
     source = power.link(power.MASTER116_PDF)
     pages = (102, 103, 104, 105, 106, 107, 108)
@@ -22,6 +24,7 @@ def test_rotated_master116page102():
     assert len(numbers) == 7
 
 
+@utilatest.requires(power.MASTER116_PDF)
 def test_rotated_normal_mixed_master116page102():
     source = power.link(power.MASTER116_PDF)
     pages = utila.ranged_tuple(100, 117)

@@ -12,6 +12,7 @@ import power
 import pytest
 import serializeraw
 import texmex
+import utilatest
 
 DOCU007 = power.link(power.DOCU007_PDF)
 SIMPLE_PAGESIZE = iamraw.path.sizeandborder(DOCU007)
@@ -22,6 +23,7 @@ SIMPLE_TEXT = iamraw.path.text(DOCU007)
 
 @pytest.fixture
 def simple():
+    utilatest.fixture_requires(power.DOCU007_PDF)
     pagesize = serializeraw.load_pageborders(SIMPLE_PAGESIZE)
     horizontals = serializeraw.load_horizontals(SIMPLE_HORIZONTAL)
     position = serializeraw.load_textpositions(SIMPLE_TEXT_POSITION)

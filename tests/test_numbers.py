@@ -15,6 +15,7 @@ import power
 import pytest
 import serializeraw
 import utila
+import utilatest
 
 import pagenumber.strategy.numbers
 
@@ -38,6 +39,7 @@ def test_header_simple(simple):
     assert not result
 
 
+@utilatest.requires(power.DOCU027_PDF)
 def test_footer_docu027():
     source = power.link(power.DOCU027_PDF)
     navigators = serializeraw.create_pagetextnavigators_frompath(source)
@@ -50,6 +52,7 @@ def test_footer_docu027():
     assert len(result) == 3, utila.log_raw(result)
 
 
+@utilatest.requires(power.DOCU027_PDF)
 def test_header_docu027():
     source = power.link(power.DOCU027_PDF)
     navigators = serializeraw.create_pagetextnavigators_frompath(source)
@@ -62,6 +65,7 @@ def test_header_docu027():
     assert len(result) == 2, utila.log_raw(result)
 
 
+@utilatest.requires(power.DOCU027_PDF)
 def test_pagenumbers_docu027():
     source = power.link(power.DOCU027_PDF)
     navigators = serializeraw.create_pagetextnavigators_frompath(source)
@@ -96,6 +100,7 @@ def pagenumbers_simple(simple_navigator):
     return numbers
 
 
+@utilatest.requires(power.DOCU027_PDF, folder='notitle')
 def test_numbers_docu027_without_title():
     """Ensure to extract correct pdf page on document which starts with
     empty page.
