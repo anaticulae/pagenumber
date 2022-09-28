@@ -23,7 +23,14 @@ pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 PACKAGE = pagenumber.PROCESS
 
 RESOURCES = [
-    genex.todo(power.DOCU007_PDF, tablero=True, rawmaker=genex.config.CONFIG),
+    genex.todo(
+        power.DOCU007_PDF,
+        tablero=True,
+        pagenumber=True,
+        footnote=True,
+        groupme='--content',
+        rawmaker=genex.config.CONFIG,
+    ),
     power.BACHELOR045A_PDF,
     power.BACHELOR085_PDF,
     power.BACHELOR111_PDF,
@@ -79,6 +86,7 @@ def extract(resources):
         rawmaker=RAWMAKER,
         oneline=ONELINE,
         worker=WORKER,
+        footnote=True,
     )
 
 
