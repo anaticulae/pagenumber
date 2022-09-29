@@ -32,6 +32,7 @@ RESOURCES = [
         rawmaker=genex.config.CONFIG,
     ),
     power.BACHELOR045A_PDF,
+    power.BACHELOR051_PDF,
     power.BACHELOR085_PDF,
     power.BACHELOR111_PDF,
     power.DISS148_PDF,
