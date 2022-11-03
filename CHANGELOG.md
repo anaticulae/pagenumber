@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.2.3 (2022-11-03)
+
+### Chore
+
+* convert nightly to all (ec296e29ae40)
+* extend test data generator (c494f1331488)
+* upgrade requirements.txt (733dc93b8d1e)
+* upgrade environment (2f468c2b5fa5)
+* do not run in privileged mode (df1538f5abf3)
+
 ## v0.2.1
 
 ### Feature
