@@ -7,12 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import typing
-
 import utila
 
 
-def work(xresult: str, xmagic: str) -> typing.Tuple[str, str]:
+def work(xresult: str, xmagic: str) -> tuple[str, str]:
     xresult = utila.file_read(xresult)
     xmagic = utila.file_read(xmagic)
     return xresult, xmagic

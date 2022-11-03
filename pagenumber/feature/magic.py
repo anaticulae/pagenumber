@@ -18,7 +18,7 @@ def work(results: str, pages: tuple = None) -> str:
         results,
         pages=pages,
     )
-    improved = dict()
+    improved = {}
     if pagenumbers:
         improved = pagenumber.strategy.magic.pagenumbers_fill(
             pagenumbers=pagenumbers,

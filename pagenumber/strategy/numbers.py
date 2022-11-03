@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import typing
-
 import configo
 import elements
 import elements.pagenumber
@@ -133,7 +131,7 @@ def search_pagenumbers(
     pagecontent = []
     for item in footercontent:
         text, bounding = item.text.strip(), item.bounding
-        if utila.rectangle_size(bounding) > area_max:
+        if utila.rect_size(bounding) > area_max:
             # ignore to big items
             continue
         if remove_empty and not text:
@@ -209,10 +207,10 @@ def isrightpage(pdf_pagenumber: int) -> bool:
     return False
 
 
-Cluster = typing.List[typing.Tuple[iamraw.BoundingBox, str]]
+Cluster = list[tuple[iamraw.BoundingBox, str]]
 
 
-def pagenumbers(clusters: typing.List[Cluster]) -> list:
+def pagenumbers(clusters: list[Cluster]) -> list:
     """Determine pagenumbers out of list of cluster
 
     Two scenarios are possible:
@@ -305,10 +303,10 @@ def morethanone(clusters) -> bool:
     collected = []
     for cluster in clusters:
         for _, item in cluster:
-            centered = utila.rectangle_center(item[0])
+            centered = utila.rect_center(item[0])
             length = utila.length(*(0, 0, centered[0], centered[1]))
             collected.append(length)
-    collected = utila.make_unique(collected)
+    collected = utila.unique(collected)
     if not collected:
         return False
     mins, maxs = utila.mins(collected), utila.maxs(collected)

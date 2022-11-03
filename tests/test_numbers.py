@@ -8,7 +8,7 @@
 # =============================================================================
 """Extract footer out of document."""
 
-import typing
+import collections.abc
 
 import iamraw
 import power
@@ -42,7 +42,7 @@ def test_header_simple(simple):
 @utilatest.requires(power.DOCU027_PDF)
 def test_footer_docu027():
     source = power.link(power.DOCU027_PDF)
-    navigators = serializeraw.create_pagetextnavigators_frompath(source)
+    navigators = serializeraw.ptn_frompath(source)
     result = pagenumber.strategy.numbers.footer(
         navigators,
         numbers_only=False,
@@ -55,7 +55,7 @@ def test_footer_docu027():
 @utilatest.requires(power.DOCU027_PDF)
 def test_header_docu027():
     source = power.link(power.DOCU027_PDF)
-    navigators = serializeraw.create_pagetextnavigators_frompath(source)
+    navigators = serializeraw.ptn_frompath(source)
     result = pagenumber.strategy.numbers.footer(navigators)
     # Example:
     # (5,
@@ -68,9 +68,9 @@ def test_header_docu027():
 @utilatest.requires(power.DOCU027_PDF)
 def test_pagenumbers_docu027():
     source = power.link(power.DOCU027_PDF)
-    navigators = serializeraw.create_pagetextnavigators_frompath(source)
+    navigators = serializeraw.ptn_frompath(source)
     result = pagenumber.strategy.numbers.footer(navigators)
-    expected = ['i', 'ii'] + utila.ranged_list(start=1, end=24)
+    expected = ['i', 'ii'] + utila.rlist(start=1, end=24)
     numbers = pagenumber.strategy.numbers.pagenumbers(result)
     # yapf:disable
     assert any(item for item in numbers if item.direction == iamraw.PageNumberOrientation.LEFT)
@@ -86,7 +86,7 @@ def test_pagenumbers_simple(simple_navigator):
     result = pagenumber.strategy.numbers.footer(simple_navigator)
     # single page
     numbers = pagenumber.strategy.numbers.pagenumbers(result)
-    assert isinstance(numbers, typing.Iterable), numbers
+    assert isinstance(numbers, collections.abc.Iterable), numbers
     assert numbers
 
 
@@ -95,7 +95,7 @@ def pagenumbers_simple(simple_navigator):
     result = pagenumber.strategy.numbers.footer(simple_navigator)
     # single page
     numbers = pagenumber.strategy.numbers.pagenumbers(result)
-    assert isinstance(numbers, typing.Iterable), numbers
+    assert isinstance(numbers, collections.abc.Iterable), numbers
     assert numbers
     return numbers
 
@@ -108,9 +108,9 @@ def test_numbers_docu027_without_title():
     Before this patch, the pdfpages started with zero instead of one.
     """
     source = power.link(power.DOCU027_PDF, folder='notitle')
-    navigator = serializeraw.create_pagetextnavigators_frompath(source)
+    navigator = serializeraw.ptn_frompath(source)
     numbers = pagenumber.strategy.numbers.determine_pagenumbers(navigator)
     numbers = sorted(numbers)
-    expected_pdfpages = utila.ranged_list(1, 26)
+    expected_pdfpages = utila.rlist(1, 26)
     current = [item[0] for item in numbers]
     assert current == expected_pdfpages, str(current)

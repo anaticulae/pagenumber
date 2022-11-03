@@ -27,7 +27,7 @@ def test_rotated_master116page102():
 @utilatest.requires(power.MASTER116_PDF)
 def test_rotated_normal_mixed_master116page102():
     source = power.link(power.MASTER116_PDF)
-    pages = utila.ranged_tuple(100, 117)
+    pages = utila.rtuple(100, 117)
     ptn = serializeraw.ptn_frompath(source, pages=pages)
     numbers = pagenumber.strategy.numbers.determine_pagenumbers(ptn)
     assert len(numbers) == 14
