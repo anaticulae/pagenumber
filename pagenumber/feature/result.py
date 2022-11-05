@@ -24,7 +24,6 @@ Required API:
 
 import serializeraw
 import texmex
-import utila
 
 import pagenumber.strategy.numbers
 
@@ -36,7 +35,6 @@ def work(
     textpositions: str,
     pages: tuple = None,
 ) -> str:
-    utila.call('numbers')
     navigators = serializeraw.ptn_fromfile(
         text=text,
         textpositions=textpositions,
