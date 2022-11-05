@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.3.0 (2022-11-05)
+
+### Feature
+
+* enable running pagenumber twice if cleanup was done (792a98b555f8)
+
+### Fix
+
+* logging result is not required (67f242eec5d6)
+
 ## v0.2.3 (2022-11-03)
 
 ### Chore
