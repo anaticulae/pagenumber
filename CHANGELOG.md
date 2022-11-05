@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.3.1 (2022-11-05)
+
+### Fix
+
+* adjust numbers loader (42e8da9c7a1a)
+
+### Chore
+
+* upgrade requirements.txt (d1f0261c0b40)
+
 ## v0.3.0 (2022-11-05)
 
 ### Feature
