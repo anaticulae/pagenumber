@@ -9,6 +9,7 @@
 
 import functools
 
+import power
 import pytest
 import serializeraw
 import utila
@@ -61,3 +62,32 @@ class Evaluate(utilatest.BaseLiner):
             collected[item.pdfpage] = str(item.detected)
         result: str = utila.NEWLINE.join(collected.values()).rstrip()
         return result
+
+
+@utilatest.requires(power.MASTER049_PDF)
+def test_pagenumber_cleanup_pagenumber(testdir, mp):
+    """Ensure that pagenumber->cleanup->pagenumber does not removes pagenumber.
+
+    Before this patch pagenumber does not load hidden pagenumber out of the
+    first step correctly.
+    """
+    source = power.link(power.MASTER049_PDF)
+    utila.copy_content(
+        src=source,
+        dst=testdir.tmpdir,
+        unlock=True,
+    )
+    cmd = f'-i {testdir.tmpdir} -o {testdir.tmpdir}'
+    tests.run(cmd=cmd, mp=mp)
+    pages = serializeraw.load_pagenumbers(testdir.tmpdir)
+    assert pages
+    count = len(pages)
+    utila.cache_clear()
+    cmd = f'cleanup -i {testdir.tmpdir} -o {testdir.tmpdir} --select=pagenumber'
+    utila.run(cmd)
+    cmd = f'-i {testdir.tmpdir} -o {testdir.tmpdir}'
+    tests.run(cmd=cmd, mp=mp)
+    pages = serializeraw.load_pagenumbers(testdir.tmpdir)
+    assert pages
+    after = len(pages)
+    assert count == after
