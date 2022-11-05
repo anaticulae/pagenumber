@@ -47,13 +47,18 @@ def determine_pagenumbers(navigators) -> list:
     return pagenumbers(numbers)
 
 
+VALID = texmex.TextState.VISIBLE | texmex.TextState.PAGENUMBER
+
+
 def header(
     navigators,
     *,
     numbers_only: bool = True,
     remove_empty: bool = True,
 ) -> list:
-    collected = [(page.page, page.before(TOP_BORDER)) for page in navigators]
+    collected = [
+        (page.page, page.before(TOP_BORDER, state=VALID)) for page in navigators
+    ]
     common = valid_content(
         collected,
         numbers_only=numbers_only,
@@ -79,7 +84,8 @@ def footer(
         A list of clustered page footer content which are expected of
         beeing the page numbers.
     """
-    collected = [(page.page, page.after(BOTTOM_BORDER)) for page in navigators]
+    collected = [(page.page, page.after(BOTTOM_BORDER, state=VALID))
+                 for page in navigators]
     common = valid_content(
         collected,
         numbers_only=numbers_only,
