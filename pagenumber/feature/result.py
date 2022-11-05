@@ -23,9 +23,12 @@ Required API:
 """
 
 import serializeraw
+import texmex
 import utila
 
 import pagenumber.strategy.numbers
+
+VALID = texmex.TextState.VISIBLE | texmex.TextState.PAGENUMBER
 
 
 def work(
@@ -38,6 +41,7 @@ def work(
         text=text,
         textpositions=textpositions,
         pages=pages,
+        state=VALID,
     )
     detected = pagenumber.strategy.numbers.determine_pagenumbers(navigators)
     detected_dumped = serializeraw.dump_pagenumbers(detected)
