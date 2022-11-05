@@ -33,7 +33,7 @@ def simple():
     assert horizontals
     assert position
 
-    navigator = texmex.create_pagetextnavigators(
+    navigator = texmex.create_ptns(
         text=document,
         textpositions=position,
     )
