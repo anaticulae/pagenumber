@@ -65,7 +65,7 @@ class Evaluate(utilatest.BaseLiner):
 
 
 @utilatest.requires(power.MASTER049_PDF)
-def test_pagenumber_cleanup_pagenumber(testdir, mp):
+def test_pagenumber_cleanup_pagenumber(td, mp):
     """Ensure that pagenumber->cleanup->pagenumber does not removes pagenumber.
 
     Before this patch pagenumber does not load hidden pagenumber out of the
@@ -74,20 +74,20 @@ def test_pagenumber_cleanup_pagenumber(testdir, mp):
     source = power.link(power.MASTER049_PDF)
     utila.copy_content(
         src=source,
-        dst=testdir.tmpdir,
+        dst=td.tmpdir,
         unlock=True,
     )
-    cmd = f'-i {testdir.tmpdir} -o {testdir.tmpdir}'
+    cmd = f'-i {td.tmpdir} -o {td.tmpdir}'
     tests.run(cmd=cmd, mp=mp)
-    pages = serializeraw.load_pagenumbers(testdir.tmpdir)
+    pages = serializeraw.load_pagenumbers(td.tmpdir)
     assert pages
     count = len(pages)
     utila.cache_clear()
-    cmd = f'cleanup -i {testdir.tmpdir} -o {testdir.tmpdir} --select=pagenumber'
+    cmd = f'cleanup -i {td.tmpdir} -o {td.tmpdir} --select=pagenumber'
     utila.run(cmd)
-    cmd = f'-i {testdir.tmpdir} -o {testdir.tmpdir}'
+    cmd = f'-i {td.tmpdir} -o {td.tmpdir}'
     tests.run(cmd=cmd, mp=mp)
-    pages = serializeraw.load_pagenumbers(testdir.tmpdir)
+    pages = serializeraw.load_pagenumbers(td.tmpdir)
     assert pages
     after = len(pages)
     assert count == after
