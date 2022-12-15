@@ -113,7 +113,7 @@ def valid_content(
             numbers_only=numbers_only,
             remove_empty=remove_empty,
         )
-        if len(pagecontent) > POTENTIAL_PAGE_NUMBERS_PER_PER:
+        if len(pagecontent) > POTENTIAL_PAGE_NUMBERS_PER_PAGE:
             # page with a lot of numbers
             utila.error('too many potential page numbers on page: '
                         f'{pagenumber} len: {len(pagecontent)}')
@@ -179,7 +179,7 @@ def cleanup_number(text: str) -> str:
 
 COMPLEX_PAGENUMBER = elements.pagenumber.COMPLEX_PAGENUMBER
 
-POTENTIAL_PAGE_NUMBERS_PER_PER = configo.HV_INT_PLUS(default=7)
+POTENTIAL_PAGE_NUMBERS_PER_PAGE = configo.HV_INT_PLUS(default=7)
 # ( ) is required to avoid losing white space, because there are required
 # to splitby_count correctly.
 LONGWHITESPACE = utila.compiles(r'([ ]{4,10})')
