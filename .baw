@@ -10,6 +10,3 @@
 [project]
 short = pagenumber
 name = get the pages
-
-[release]
-fail_on_finding = True
