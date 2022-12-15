@@ -8,7 +8,6 @@
 # =============================================================================
 
 import genex
-import genex.config
 import power
 import utilatest
 from utilatest import mp  # pylint:disable=W0611
@@ -26,7 +25,7 @@ RESOURCES = [
         pagenumber=True,
         footnote=True,
         groupme='--content',
-        rawmaker=genex.config.CONFIG,
+        rawmaker=genex.CONFIG,
     ),
     power.BACHELOR045A_PDF,
     power.BACHELOR051_PDF,
@@ -72,7 +71,7 @@ def pytest_sessionstart(session):  # pylint:disable=W0613
     power.run()
 
 
-CONFIG = genex.config.CONFIG.strip()
+CONFIG = genex.CONFIG.strip()
 RAWMAKER = f'--text --fonts --border --line --horizontals {CONFIG}'
 # disable oneline extraction
 ONELINE = None
