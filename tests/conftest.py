@@ -83,7 +83,6 @@ def extract(resources):
         rawmaker=RAWMAKER,
         oneline=ONELINE,
         worker=WORKER,
-        footnote=True,
     )
 
 
