@@ -14,6 +14,8 @@ import iamraw
 import texmex
 import utila
 
+import pagenumber.utils
+
 # Header in the range of 0% till 20%
 TOP_BORDER = configo.HV_PERCENT_PLUS(default=20)
 # TODO: Think about scaling this value depending on result
@@ -47,18 +49,16 @@ def determine_pagenumbers(navigators) -> list:
     return pagenumbers(numbers)
 
 
-VALID = texmex.TextState.VISIBLE | texmex.TextState.PAGENUMBER
-
-
 def header(
     navigators,
     *,
     numbers_only: bool = True,
     remove_empty: bool = True,
 ) -> list:
-    collected = [
-        (page.page, page.before(TOP_BORDER, state=VALID)) for page in navigators
-    ]
+    collected = [(
+        page.page,
+        page.before(TOP_BORDER, state=pagenumber.utils.VALID),
+    ) for page in navigators]
     common = valid_content(
         collected,
         numbers_only=numbers_only,
@@ -84,8 +84,10 @@ def footer(
         A list of clustered page footer content which are expected of
         beeing the page numbers.
     """
-    collected = [(page.page, page.after(BOTTOM_BORDER, state=VALID))
-                 for page in navigators]
+    collected = [(
+        page.page,
+        page.after(BOTTOM_BORDER, state=pagenumber.utils.VALID),
+    ) for page in navigators]
     common = valid_content(
         collected,
         numbers_only=numbers_only,
@@ -104,10 +106,10 @@ def valid_content(
 ):
     """Detect similar elements which are duplicated on different pages."""
     filtered = []
-    for pagenumber, footercontent in navigators:
+    for xpagenumber, footercontent in navigators:
         footercontent = split_ifrequired(footercontent)
         pagecontent = search_pagenumbers(
-            pagenumber,
+            xpagenumber,
             footercontent,
             area_max=area_max,
             numbers_only=numbers_only,
@@ -116,7 +118,7 @@ def valid_content(
         if len(pagecontent) > POTENTIAL_PAGE_NUMBERS_PER_PAGE:
             # page with a lot of numbers
             utila.error('too many potential page numbers on page: '
-                        f'{pagenumber} len: {len(pagecontent)}')
+                        f'{xpagenumber} len: {len(pagecontent)}')
             continue
         filtered.append(pagecontent)
     common = utila.common_items(
@@ -128,7 +130,7 @@ def valid_content(
 
 
 def search_pagenumbers(
-    pagenumber,
+    xpagenumber,
     footercontent,
     area_max: float,
     numbers_only: bool = True,
@@ -153,7 +155,7 @@ def search_pagenumbers(
         item = (
             bounding,
             cleaned,
-            pagenumber,
+            xpagenumber,
         )
         pagecontent.append(item)
     return pagecontent

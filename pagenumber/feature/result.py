@@ -23,11 +23,9 @@ Required API:
 """
 
 import serializeraw
-import texmex
 
 import pagenumber.strategy.numbers
-
-VALID = texmex.TextState.VISIBLE | texmex.TextState.PAGENUMBER
+import pagenumber.utils
 
 
 def work(
@@ -39,7 +37,7 @@ def work(
         text=text,
         textpositions=textpositions,
         pages=pages,
-        state=VALID,
+        state=pagenumber.utils.VALID,
     )
     detected = pagenumber.strategy.numbers.determine_pagenumbers(navigators)
     detected_dumped = serializeraw.dump_pagenumbers(detected)
