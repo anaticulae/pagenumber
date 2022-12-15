@@ -96,9 +96,9 @@ def footer(
 
 def valid_content(
     navigators,
-    max_area: float = BOTTOM_AREA_MAX,
-    max_difference: float = BOTTOM_DIFFERENCE_MAX,
-    min_elements: int = PAGE_ELEMENTS_MIN,
+    area_max: float = BOTTOM_AREA_MAX,
+    difference_max: float = BOTTOM_DIFFERENCE_MAX,
+    elements_min: int = PAGE_ELEMENTS_MIN,
     numbers_only: bool = True,
     remove_empty: bool = True,
 ):
@@ -109,7 +109,7 @@ def valid_content(
         pagecontent = search_pagenumbers(
             pagenumber,
             footercontent,
-            area_max=max_area,
+            area_max=area_max,
             numbers_only=numbers_only,
             remove_empty=remove_empty,
         )
@@ -121,8 +121,8 @@ def valid_content(
         filtered.append(pagecontent)
     common = utila.common_items(
         filtered,
-        max_difference=max_difference,
-        min_elements=min_elements,
+        max_difference=difference_max,
+        min_elements=elements_min,
     )
     return common
 
