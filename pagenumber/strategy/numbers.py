@@ -189,6 +189,13 @@ def split_ifrequired(content) -> list:
     """Improve bad printed pdf.
 
     Zugverkehrsleitende und ihre Aufgaben       3
+    >>> split_ifrequired([texmex.TextInfo(**{'text':'Zugverkehrsleitende und ihre Aufgaben       3',
+    ... 'bounding': iamraw.BoundingBox(x0=59.55, y0=120.59, x1=424.91, y1=132.59),
+    ... 'style': texmex.TextStyle(content=[texmex.CharStyle(start=0, end=45, size=12.0)])
+    ... })])
+    [Zugverkehrsleitende und ihre Aufgaben
+    , 3
+    ]
     """
     if not content:
         return content
