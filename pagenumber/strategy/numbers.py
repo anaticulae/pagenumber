@@ -160,6 +160,14 @@ def search_pagenumbers(
 
 
 def cleanup_number(text: str) -> str:
+    """\
+    >>> cleanup_number('-10-')
+    '10'
+    >>> cleanup_number('32/50')
+    '32'
+    >>> cleanup_number('3 50')
+    '350'
+    """
     # support -1-, -2-, ...
     clean = text.replace('-', '', 2).strip()
     # 32/54
