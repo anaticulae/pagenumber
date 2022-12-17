@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.3.3 (2022-12-17)
+
+### Chore
+
+* footnote is not required anymore (9cde15e58680)
+* remove default behavior (f6cbcd9826f4)
+* remove pagenumber dependency (229cb38fc911)
+* use quick install (60d7da5352e0)
+* upgrade requirements.txt (33fe9c85e38b)
+* upgrade Jenkinsfile (fc9cf7c099f8)
+* upgrade Pipeline (33cee750b1ad)
+
 ## v0.3.2 (2022-12-05)
 
 ### Chore
