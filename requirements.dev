@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utilatest==0.24.3
+utilatest==0.24.4
 # reference to test data
 power==2.20.0
 hardcore>=0.8.0<1.0.0
