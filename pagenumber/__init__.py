@@ -9,7 +9,7 @@
 
 import os
 
-__version__ = '0.3.3'
+__version__ = '0.3.4'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PROCESS = 'pagenumber'
