@@ -33,6 +33,11 @@ pipeline {
                 }
             }
         }
+        stage('pre-release'){
+            steps{
+                script{baw.pre()}
+            }
+        }
         stage('generate'){
             steps{
                 sh 'baw --docken generate all'
@@ -58,10 +63,6 @@ pipeline {
                     }
                 }
             }
-        }
-        stage('pre-release'){
-            when{not{branch 'master'}}
-            steps{sh 'baw publish --pre'}
         }
         stage('release'){
             steps{
