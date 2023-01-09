@@ -9,6 +9,7 @@
 
 import genex
 import power
+import resinf
 import utilatest
 from utilatest import mp  # pylint:disable=W0611
 from utilatest import td  # pylint:disable=W0611
@@ -19,7 +20,7 @@ from tests.fixtures.simple import simple_navigator  # pylint:disable=W0611
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
 RESOURCES = [
-    genex.todo(
+    resinf.todo(
         power.DOCU007_PDF,
         tablero=True,
         pagenumber=True,
