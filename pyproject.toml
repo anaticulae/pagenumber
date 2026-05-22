@@ -36,10 +36,11 @@ content-type = "text/markdown"
 
 [project.optional-dependencies]
 dev = [
-    "utilotest==1.0.4",
+    "gennex==1.0.3",
     "hoverpower==1.2.0",
-    "gennex==1.0.1",
+    "jamer==1.0.2",
     "rawmaker==2.40.3",
+    "utilotest==1.0.4",
 ]
 
 [project.scripts]
