@@ -7,10 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 
 def work(xresult: str, xmagic: str) -> tuple[str, str]:
-    xresult = utila.file_read(xresult)
-    xmagic = utila.file_read(xmagic)
+    xresult = utilo.file_read(xresult)
+    xmagic = utilo.file_read(xmagic)
     return xresult, xmagic

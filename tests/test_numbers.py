@@ -10,12 +10,12 @@
 
 import collections.abc
 
+import hoverpower
 import iamraw
-import power
 import pytest
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import pagenumber.strategy.numbers
 
@@ -39,9 +39,9 @@ def test_header_simple(simple):
     assert not result
 
 
-@utilatest.requires(power.DOCU027_PDF)
+@utilotest.requires(hoverpower.DOCU027_PDF)
 def test_footer_docu027():
-    source = power.link(power.DOCU027_PDF)
+    source = hoverpower.link(hoverpower.DOCU027_PDF)
     navigators = serializeraw.ptn_frompath(source)
     result = pagenumber.strategy.numbers.footer(
         navigators,
@@ -49,12 +49,12 @@ def test_footer_docu027():
     )
     # cluster with page numbers
     # 2 Pages and some header text lines
-    assert len(result) == 3, utila.log_raw(result)
+    assert len(result) == 3, utilo.log_raw(result)
 
 
-@utilatest.requires(power.DOCU027_PDF)
+@utilotest.requires(hoverpower.DOCU027_PDF)
 def test_header_docu027():
-    source = power.link(power.DOCU027_PDF)
+    source = hoverpower.link(hoverpower.DOCU027_PDF)
     navigators = serializeraw.ptn_frompath(source)
     result = pagenumber.strategy.numbers.footer(navigators)
     # Example:
@@ -62,15 +62,15 @@ def test_header_docu027():
     # (BoundingBox(x_bottom=72.00, y_bottom=746.33, x_top=336.99, y_top=758.84),
     # 'The RestructuredText Book Documentation, Release 0.1'))
     # 2 lines of header, one for the left and one for the right page/side
-    assert len(result) == 2, utila.log_raw(result)
+    assert len(result) == 2, utilo.log_raw(result)
 
 
-@utilatest.requires(power.DOCU027_PDF)
+@utilotest.requires(hoverpower.DOCU027_PDF)
 def test_pagenumbers_docu027():
-    source = power.link(power.DOCU027_PDF)
+    source = hoverpower.link(hoverpower.DOCU027_PDF)
     navigators = serializeraw.ptn_frompath(source)
     result = pagenumber.strategy.numbers.footer(navigators)
-    expected = ['i', 'ii'] + utila.rlist(start=1, end=24)
+    expected = ['i', 'ii'] + utilo.rlist(start=1, end=24)
     numbers = pagenumber.strategy.numbers.pagenumbers(result)
     # yapf:disable
     assert any(item for item in numbers if item.direction == iamraw.PageNumberOrientation.LEFT)
@@ -100,17 +100,17 @@ def pagenumbers_simple(simple_navigator):
     return numbers
 
 
-@utilatest.requires(power.DOCU027_PDF, folder='notitle')
+@utilotest.requires(hoverpower.DOCU027_PDF, folder='notitle')
 def test_numbers_docu027_without_title():
     """Ensure to extract correct pdf page on document which starts with
     empty page.
 
     Before this patch, the pdfpages started with zero instead of one.
     """
-    source = power.link(power.DOCU027_PDF, folder='notitle')
+    source = hoverpower.link(hoverpower.DOCU027_PDF, folder='notitle')
     navigator = serializeraw.ptn_frompath(source)
     numbers = pagenumber.strategy.numbers.determine_pagenumbers(navigator)
     numbers = sorted(numbers)
-    expected_pdfpages = utila.rlist(1, 26)
+    expected_pdfpages = utilo.rlist(1, 26)
     current = [item[0] for item in numbers]
     assert current == expected_pdfpages, str(current)

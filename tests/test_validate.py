@@ -9,21 +9,21 @@
 
 import functools
 
-import power
+import hoverpower
 import pytest
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import pagenumber
 import tests
 
-ARCHIVE = utila.join(pagenumber.ROOT, 'tests/expected', exist=True)
+ARCHIVE = utilo.join(pagenumber.ROOT, 'tests/expected', exist=True)
 
-PAGENUMBERS = utilatest.test_resources(tests.conftest.RESOURCES)
+PAGENUMBERS = utilotest.test_resources(tests.conftest.RESOURCES)
 
 
-@utilatest.nightly
+@utilotest.nightly
 @pytest.mark.parametrize('source', PAGENUMBERS)
 def test_validate(source, mp, td):
     Evaluate(
@@ -33,7 +33,7 @@ def test_validate(source, mp, td):
     ).evaluate()
 
 
-class Evaluate(utilatest.BaseLiner):
+class Evaluate(utilotest.BaseLiner):
 
     def __init__(self, source, workdir, mp):
         super().__init__(
@@ -60,19 +60,19 @@ class Evaluate(utilatest.BaseLiner):
         collected = {pdfpage: '' for pdfpage in range(maxpage)}
         for item in value:
             collected[item.pdfpage] = str(item.detected)
-        result: str = utila.NEWLINE.join(collected.values()).rstrip()
+        result: str = utilo.NEWLINE.join(collected.values()).rstrip()
         return result
 
 
-@utilatest.requires(power.MASTER049_PDF)
+@utilotest.requires(hoverpower.MASTER049_PDF)
 def test_pagenumber_cleanup_pagenumber(td, mp):
     """Ensure that pagenumber->cleanup->pagenumber does not removes pagenumber.
 
     Before this patch pagenumber does not load hidden pagenumber out of the
     first step correctly.
     """
-    source = power.link(power.MASTER049_PDF)
-    utila.copy_content(
+    source = hoverpower.link(hoverpower.MASTER049_PDF)
+    utilo.copy_content(
         src=source,
         dst=td.tmpdir,
         unlock=True,
@@ -82,9 +82,9 @@ def test_pagenumber_cleanup_pagenumber(td, mp):
     pages = serializeraw.load_pagenumbers(td.tmpdir)
     assert pages
     count = len(pages)
-    utila.cache_clear()
+    utilo.cache_clear()
     cmd = f'cleanup -i {td.tmpdir} -o {td.tmpdir} --select=pagenumber'
-    utila.run(cmd)
+    utilo.run(cmd)
     cmd = f'-i {td.tmpdir} -o {td.tmpdir}'
     tests.run(cmd=cmd, mp=mp)
     pages = serializeraw.load_pagenumbers(td.tmpdir)

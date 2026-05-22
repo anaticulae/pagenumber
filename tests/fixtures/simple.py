@@ -7,14 +7,14 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import hoverpower
 import iamraw
-import power
 import pytest
 import serializeraw
 import texmex
-import utilatest
+import utilotest
 
-DOCU007 = power.link(power.DOCU007_PDF)
+DOCU007 = hoverpower.link(hoverpower.DOCU007_PDF)
 SIMPLE_PAGESIZE = iamraw.path.sizeandborder(DOCU007)
 SIMPLE_HORIZONTAL = iamraw.path.horizontals(DOCU007)
 SIMPLE_TEXT_POSITION = iamraw.path.textposition(DOCU007)
@@ -23,7 +23,7 @@ SIMPLE_TEXT = iamraw.path.text(DOCU007)
 
 @pytest.fixture
 def simple():
-    utilatest.fixture_requires(power.DOCU007_PDF)
+    utilotest.fixture_requires(hoverpower.DOCU007_PDF)
     pagesize = serializeraw.load_pageborders(SIMPLE_PAGESIZE)
     horizontals = serializeraw.load_horizontals(SIMPLE_HORIZONTAL)
     position = serializeraw.load_textpositions(SIMPLE_TEXT_POSITION)

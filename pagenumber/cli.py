@@ -7,33 +7,33 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
-import utila
+import utilo
 
 import pagenumber
 
 DESCRIPTION = 'TODO'
 
 WORKPLAN = [
-    utila.create_step(
+    utilo.create_step(
         'result',
         inputs=[
-            utila.ResultFile(producer='rawmaker', name='text_text'),
-            utila.ResultFile(producer='rawmaker', name='text_positions'),
+            utilo.ResultFile(producer='rawmaker', name='text_text'),
+            utilo.ResultFile(producer='rawmaker', name='text_positions'),
         ],
         output=('result',),
     ),
-    utila.create_step(
+    utilo.create_step(
         'magic',
         inputs=[
-            utila.ResultFile(producer='pagenumber', name='result_result'),
+            utilo.ResultFile(producer='pagenumber', name='result_result'),
         ],
         output=('magic',),
     ),
-    utila.create_step(
+    utilo.create_step(
         'legacy',
         inputs=[
-            utila.ResultFile(producer='pagenumber', name='result_result'),
-            utila.ResultFile(producer='pagenumber', name='magic_magic'),
+            utilo.ResultFile(producer='pagenumber', name='result_result'),
+            utilo.ResultFile(producer='pagenumber', name='magic_magic'),
         ],
         output=('pagenumber', 'magic'),
     ),
@@ -41,11 +41,11 @@ WORKPLAN = [
 
 
 def main():
-    utila.featurepack(
+    utilo.featurepack(
         workplan=WORKPLAN,
         root=pagenumber.ROOT,
         featurepackage='pagenumber.feature',
-        config=utila.FeaturePackConfig(
+        config=utilo.FeaturePackConfig(
             description=DESCRIPTION,
             multiprocessed=True,
             name=pagenumber.PROCESS,
@@ -60,12 +60,12 @@ def rename(path):
     if not isinstance(path, str):
         path = [rename(item) for item in path]
         return path
-    path = utila.rreplace(
+    path = utilo.rreplace(
         path,
         pattern='pagenumber__legacy_pagenumber',
         replace='groupme__pagenumbers_pagenumbers',
     )
-    path = utila.rreplace(
+    path = utilo.rreplace(
         path,
         pattern='pagenumber__legacy_magic',
         replace='groupme__pagenumbers_magic',

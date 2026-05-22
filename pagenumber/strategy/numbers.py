@@ -7,31 +7,31 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import configo
-import elements
-import elements.pagenumber
+import configos
+import elementae
+import elementae.pagenumber
 import iamraw
 import texmex
-import utila
+import utilo
 
 import pagenumber.utils
 
 # Header in the range of 0% till 20%
-TOP_BORDER = configo.HV_PERCENT_PLUS(default=20)
+TOP_BORDER = configos.HV_PERCENT_PLUS(default=20)
 # TODO: Think about scaling this value depending on result
 # Footer is in range of 80% till 100%
-BOTTOM_BORDER = configo.HV_PERCENT_PLUS(default=80)
+BOTTOM_BORDER = configos.HV_PERCENT_PLUS(default=80)
 
-BOTTOM_DIFFERENCE_MAX = configo.HV_FLOAT_PLUS(default=20.0)
+BOTTOM_DIFFERENCE_MAX = configos.HV_FLOAT_PLUS(default=20.0)
 # page number is not very big
-BOTTOM_AREA_MAX = configo.HV_FLOAT_PLUS(default=2500.0)
+BOTTOM_AREA_MAX = configos.HV_FLOAT_PLUS(default=2500.0)
 
-PAGE_ELEMENTS_MIN = configo.HV_INT_PLUS(default=4)
+PAGE_ELEMENTS_MIN = configos.HV_INT_PLUS(default=4)
 
 
 def determine_pagenumbers(navigators) -> list:
     numbers = []
-    rotated, normal = utila.partition(iswidepage, navigators)
+    rotated, normal = utilo.partition(iswidepage, navigators)
     detected = header(normal) + footer(normal)
     if detected:
         numbers.extend(detected)
@@ -73,13 +73,13 @@ def footer(
     numbers_only: bool = True,
     remove_empty: bool = True,
 ) -> list:
-    """Detect similar elements in footer area which are duplicated on
+    """Detect similar elementae in footer area which are duplicated on
     different pages.
 
     Args:
         navigators(list): list of text navgiators
-        numbers_only(bool): if True, remove all non numeric/romanic elements
-        remove_empty(bool): remove empty elements, e.g. whitespaces
+        numbers_only(bool): if True, remove all non numeric/romanic elementae
+        remove_empty(bool): remove empty elementae, e.g. whitespaces
     Returns:
         A list of clustered page footer content which are expected of
         beeing the page numbers.
@@ -100,11 +100,11 @@ def valid_content(
     navigators,
     area_max: float = BOTTOM_AREA_MAX,
     difference_max: float = BOTTOM_DIFFERENCE_MAX,
-    elements_min: int = PAGE_ELEMENTS_MIN,
+    elementae_min: int = PAGE_ELEMENTS_MIN,
     numbers_only: bool = True,
     remove_empty: bool = True,
 ):
-    """Detect similar elements which are duplicated on different pages."""
+    """Detect similar elementae which are duplicated on different pages."""
     filtered = []
     for xpagenumber, footercontent in navigators:
         footercontent = split_ifrequired(footercontent)
@@ -117,14 +117,14 @@ def valid_content(
         )
         if len(pagecontent) > POTENTIAL_PAGE_NUMBERS_PER_PAGE:
             # page with a lot of numbers
-            utila.error('too many potential page numbers on page: '
+            utilo.error('too many potential page numbers on page: '
                         f'{xpagenumber} len: {len(pagecontent)}')
             continue
         filtered.append(pagecontent)
-    common = utila.common_items(
+    common = utilo.common_items(
         filtered,
         max_difference=difference_max,
-        min_elements=elements_min,
+        min_elementae=elementae_min,
     )
     return common
 
@@ -139,13 +139,13 @@ def search_pagenumbers(
     pagecontent = []
     for item in footercontent:
         text, bounding = item.text.strip(), item.bounding
-        if utila.rect_size(bounding) > area_max:
+        if utilo.rect_size(bounding) > area_max:
             # ignore to big items
             continue
         if remove_empty and not text:
             # filter empty items
             continue
-        if numbers_only and not elements.ispagenumber(text):
+        if numbers_only and not elementae.ispagenumber(text):
             # remove non numeric items
             continue
         cleaned = cleanup_number(text)
@@ -179,12 +179,12 @@ def cleanup_number(text: str) -> str:
     return clean
 
 
-COMPLEX_PAGENUMBER = elements.pagenumber.COMPLEX_PAGENUMBER
+COMPLEX_PAGENUMBER = elementae.pagenumber.COMPLEX_PAGENUMBER
 
-POTENTIAL_PAGE_NUMBERS_PER_PAGE = configo.HV_INT_PLUS(default=7)
+POTENTIAL_PAGE_NUMBERS_PER_PAGE = configos.HV_INT_PLUS(default=7)
 # ( ) is required to avoid losing white space, because there are required
 # to splitby_count correctly.
-LONGWHITESPACE = utila.compiles(r'([ ]{4,10})')
+LONGWHITESPACE = utilo.compiles(r'([ ]{4,10})')
 
 
 def split_ifrequired(content) -> list:
@@ -225,7 +225,7 @@ def isrightpage(pdf_pagenumber: int) -> bool:
     The first page is the right page?
     """
     # TODO: REQUIRE SMART ALTERNATIVE
-    if utila.iseven(pdf_pagenumber):
+    if utilo.iseven(pdf_pagenumber):
         return True
     return False
 
@@ -258,7 +258,7 @@ def pagenumbers(clusters: list[Cluster]) -> list:
             content = str(content)
             # remove a single gap
             content = content.replace(' ', '', 1)
-            if not elements.ispagenumber(content):
+            if not elementae.ispagenumber(content):
                 continue
             try:
                 content: int = int(content)
@@ -278,7 +278,7 @@ def pagenumbers(clusters: list[Cluster]) -> list:
     return result
 
 
-DUPLICATED_PAGE_NUMBER_MAX = configo.HV_PERCENT_PLUS(default=75)
+DUPLICATED_PAGE_NUMBER_MAX = configos.HV_PERCENT_PLUS(default=75)
 
 
 def already_done(cluster, result) -> bool:
@@ -298,9 +298,9 @@ def already_done(cluster, result) -> bool:
         dones.append(pdfpage)
     if not dones:
         return False
-    rate = utila.rate_rel(len(dones), len(cluster))
+    rate = utilo.rate_rel(len(dones), len(cluster))
     if rate > DUPLICATED_PAGE_NUMBER_MAX:
-        utila.debug(f'multiple page number cluster on page: {dones}')
+        utilo.debug(f'multiple page number cluster on page: {dones}')
         return True
     return False
 
@@ -314,7 +314,7 @@ def determine_orientation(pdfpage, clusters) -> iamraw.PageNumberOrientation:
     return iamraw.PageNumberOrientation.LEFT
 
 
-MORETHANONE_DIFF_MAX = configo.HV_FLOAT_PLUS(default=100.0)
+MORETHANONE_DIFF_MAX = configos.HV_FLOAT_PLUS(default=100.0)
 
 
 def morethanone(clusters) -> bool:
@@ -326,13 +326,13 @@ def morethanone(clusters) -> bool:
     collected = []
     for cluster in clusters:
         for _, item in cluster:
-            centered = utila.rect_center(item[0])
-            length = utila.length(*(0, 0, centered[0], centered[1]))
+            centered = utilo.rect_center(item[0])
+            length = utilo.length(*(0, 0, centered[0], centered[1]))
             collected.append(length)
-    collected = utila.unique(collected)
+    collected = utilo.unique(collected)
     if not collected:
         return False
-    mins, maxs = utila.mins(collected), utila.maxs(collected)
+    mins, maxs = utilo.mins(collected), utilo.maxs(collected)
     diff = maxs - mins
     result = diff > MORETHANONE_DIFF_MAX
     return result
@@ -349,7 +349,7 @@ def multiple_number_perpage(cluster) -> bool:
     return False
 
 
-UNIQUE_RATE_MIN = configo.HV_PERCENT_PLUS(default=70)
+UNIQUE_RATE_MIN = configos.HV_PERCENT_PLUS(default=70)
 
 
 def valid_cluster(cluster) -> bool:
@@ -359,7 +359,7 @@ def valid_cluster(cluster) -> bool:
         pages.append(parse_pagenumber(number))
     if not pages:
         return False
-    unique_rate = utila.rate_rel(
+    unique_rate = utilo.rate_rel(
         set(pages),
         pages,
     )
@@ -367,23 +367,23 @@ def valid_cluster(cluster) -> bool:
         return False
     # remove roman numbers to allow grouping
     pages = [item for item in pages if isinstance(item, int)]
-    # pages = utila.notnone(pages)
+    # pages = utilo.notnone(pages)
     # diff=2 to support left right page numbers
-    grouped = utila.groupby_diff(utila.notnone(pages), maxdiff=5)
+    grouped = utilo.groupby_diff(utilo.notnone(pages), maxdiff=5)
     if len(grouped) <= 2:
         return True
     if len(pages) <= 5:
         # cluster too small
         return False
-    notnone = utila.notnone(pages)
+    notnone = utilo.notnone(pages)
     if sorted(notnone) == notnone:
         return True
     return False
 
 
 def parse_pagenumber(number: str) -> int:
-    if utila.isarabic(number):
+    if utilo.isarabic(number):
         return int(number)
-    if utila.isroman(number):
+    if utilo.isroman(number):
         return number
     return None

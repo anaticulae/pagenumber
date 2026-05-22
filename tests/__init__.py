@@ -7,11 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
-import utilatest
+import hoverpower
+import utilotest
 
 import pagenumber
 
-power.setup(pagenumber.ROOT)
+hoverpower.setup(pagenumber.ROOT)
 
-run, fail = utilatest.create_cli_runner(pagenumber)
+run, fail = utilotest.create_cli_runner(pagenumber)

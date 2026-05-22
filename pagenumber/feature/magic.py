@@ -8,7 +8,7 @@
 # =============================================================================
 
 import serializeraw
-import utila
+import utilo
 
 import pagenumber.strategy.magic
 
@@ -24,5 +24,5 @@ def work(results: str, pages: tuple = None) -> str:
             pagenumbers=pagenumbers,
             pdflength=len(pagenumbers),
         )
-    improved_dumped = utila.yaml_dump(improved)
+    improved_dumped = utilo.yaml_dump(improved)
     return improved_dumped
