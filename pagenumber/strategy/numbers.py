@@ -124,7 +124,7 @@ def valid_content(
     common = utilo.common_items(
         filtered,
         max_difference=difference_max,
-        min_elementae=elementae_min,
+        min_elements=elementae_min,
     )
     return common
 
