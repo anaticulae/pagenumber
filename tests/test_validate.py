@@ -17,6 +17,7 @@ import utilotest
 
 import pagenumber
 import tests
+import tests.conftest
 
 ARCHIVE = utilo.join(pagenumber.ROOT, 'tests/expected', exist=True)
 
