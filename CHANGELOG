@@ -1,97 +1,364 @@
-# Changelog
+# CHANGELOG
 
-Every noteable change is logged here.
+
+## v1.0.0 (2026-05-25)
+
+### Chores
+
+- **docker**: Add ignore
+  ([`53fe379`](https://github.com/anaticulae/pagenumber/commit/53fe379bbd751e7b675dd9156c1bc831a84ac1a0))
+
+- **docker**: Adjust base image
+  ([`c79b032`](https://github.com/anaticulae/pagenumber/commit/c79b032352b37647728f458a933b7473ff1ddb95))
+
+- **github**: Add .github
+  ([`57af188`](https://github.com/anaticulae/pagenumber/commit/57af18827b1def5e3909a983b71549e3cb473d56))
+
+- **github**: Add hoverpower secret
+  ([`18ec2c8`](https://github.com/anaticulae/pagenumber/commit/18ec2c879cc26fcbdda74aaaa026e05101457bb6))
+
+- **make**: Add makefile
+  ([`c3a61f3`](https://github.com/anaticulae/pagenumber/commit/c3a61f35ed6af5c411955def08f20049944d8ce2))
+
+- **project**: Add jamer
+  ([`87c34c4`](https://github.com/anaticulae/pagenumber/commit/87c34c4b3a3ae8f57484c2c6c48e50e34123f5d1))
+
+- **project**: Add modern setup
+  ([`9313f2b`](https://github.com/anaticulae/pagenumber/commit/9313f2be89ae14696bc216df1cd8446a14a60ae1))
+
+- **rename**: Adjust package name
+  ([`cf49e01`](https://github.com/anaticulae/pagenumber/commit/cf49e01197240e7e475b4a3a332f5de09f7efcd5))
+
+### Documentation
+
+- **copyright**: Happy New Year!
+  ([`9e21ee9`](https://github.com/anaticulae/pagenumber/commit/9e21ee9420e4f3fccedafc76110ee65077352e49))
+
+### Testing
+
+- **disable**: Disable missing package
+  ([`6a0568f`](https://github.com/anaticulae/pagenumber/commit/6a0568f2ea2e630603143eae4d74db2ccfe4cfda))
+
+- **validate**: Adjust import
+  ([`1552154`](https://github.com/anaticulae/pagenumber/commit/1552154f4818e7a4396d4e5927987aa354a891d1))
+
+- **validate**: Disable unit test
+  ([`a4404b1`](https://github.com/anaticulae/pagenumber/commit/a4404b153af79a237432c8393ed5624bef8c9f61))
+
 
 ## v0.3.5 (2023-01-09)
 
-### Chore
+### Chores
 
-* use new pre-release (8302ab0355a5)
-* upgrade requirements.txt (675308c29d6e)
-* upgrade Jenkinsfile (1609dfa6bd72)
-* upgrade pipe library (81da62691e2a)
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`1609dfa`](https://github.com/anaticulae/pagenumber/commit/1609dfa6bd72ce66b999e805bf2054eefd0ba6bf))
+
+- **Jenkins**: Upgrade pipe library
+  ([`81da626`](https://github.com/anaticulae/pagenumber/commit/81da62691e2adcbc8b0cd6b7706bde593cf51a60))
+
+- **Jenkins**: Use new pre-release
+  ([`8302ab0`](https://github.com/anaticulae/pagenumber/commit/8302ab0355a5afa3269c80b1fa37fdd22836981c))
+
+- **requirements**: Upgrade requirements.txt
+  ([`675308c`](https://github.com/anaticulae/pagenumber/commit/675308c29d6e6efcb53af132db6bcccbea1b2e88))
+
 
 ## v0.3.4 (2022-12-18)
 
-### Chore
+### Chores
 
-* upgrade requirements.txt (f9b92beb7c05)
-* add rebase step (14ba26b161e5)
-* upgrade Jenkinsfile (1c40e6fb9ddb)
-* upgrade pipe library (6cdd993d7a33)
+- **Jenkins**: Add rebase step
+  ([`14ba26b`](https://github.com/anaticulae/pagenumber/commit/14ba26b161e5960a5c0a89adf888ada9c30ed771))
+
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`1c40e6f`](https://github.com/anaticulae/pagenumber/commit/1c40e6fb9ddbbf4f0de28fc86f87fb70aadc4c6a))
+
+- **Jenkins**: Upgrade pipe library
+  ([`6cdd993`](https://github.com/anaticulae/pagenumber/commit/6cdd993d7a33e2a120597c1a44f045a7f9e00226))
+
+- **requirements**: Upgrade requirements.txt
+  ([`f9b92be`](https://github.com/anaticulae/pagenumber/commit/f9b92beb7c057757622c1d18c17680243839734b))
+
 
 ## v0.3.3 (2022-12-17)
 
-### Chore
+### Chores
 
-* footnote is not required anymore (9cde15e58680)
-* remove default behavior (f6cbcd9826f4)
-* remove pagenumber dependency (229cb38fc911)
-* use quick install (60d7da5352e0)
-* upgrade requirements.txt (33fe9c85e38b)
-* upgrade Jenkinsfile (fc9cf7c099f8)
-* upgrade Pipeline (33cee750b1ad)
+- **baw**: Remove default behavior
+  ([`f6cbcd9`](https://github.com/anaticulae/pagenumber/commit/f6cbcd9826f47a2aeddabf4ea78e027187536bde))
+
+- **conftest**: Footnote is not required anymore
+  ([`9cde15e`](https://github.com/anaticulae/pagenumber/commit/9cde15e58680685b0125943d0f4410fd460868b0))
+
+- **conftest**: Remove pagenumber dependency
+  ([`229cb38`](https://github.com/anaticulae/pagenumber/commit/229cb38fc911ee09457e1b694313cd47fa6a6c45))
+
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`fc9cf7c`](https://github.com/anaticulae/pagenumber/commit/fc9cf7c099f89f76dc426af23dfbbf37c139b26e))
+
+- **Jenkins**: Upgrade Pipeline
+  ([`33cee75`](https://github.com/anaticulae/pagenumber/commit/33cee750b1adc185d579b4e5b32c5c00fc8706ee))
+
+- **requirements**: Upgrade requirements.txt
+  ([`33fe9c8`](https://github.com/anaticulae/pagenumber/commit/33fe9c85e38b22f1b755b12cd6b74b0740744661))
+
+- **setup**: Use quick install
+  ([`60d7da5`](https://github.com/anaticulae/pagenumber/commit/60d7da5352e0c01c16f044eef7ec59e6247f292d))
+
+### Code Style
+
+- **conftest**: Organize imports
+  ([`4bc222c`](https://github.com/anaticulae/pagenumber/commit/4bc222c8aabd4902095e7ad358ac33fca44993f6))
+
+- **rename**: Rename docs
+  ([`d78e587`](https://github.com/anaticulae/pagenumber/commit/d78e5879c54c3b26413e60b3aa290d5259448f59))
+
+### Refactoring
+
+- **numbers**: Clarify naming
+  ([`d32743f`](https://github.com/anaticulae/pagenumber/commit/d32743f1cec619d4054a65a1f504fefb427491fa))
+
+- **numbers**: Fix naming
+  ([`0e0b04b`](https://github.com/anaticulae/pagenumber/commit/0e0b04b5adacc1eeac0e9996fd1a36318c8d119e))
+
+- **valid**: Move to separate module
+  ([`a1eb876`](https://github.com/anaticulae/pagenumber/commit/a1eb876e6d6b3c44a9a894d82003056d46d7812a))
+
+### Testing
+
+- **numbers**: Add doctest
+  ([`dbd16ed`](https://github.com/anaticulae/pagenumber/commit/dbd16ed2882b7aad6c26dcd44b6deda6a965a13f))
+
+- **numbers**: Add doctests
+  ([`f9f3fe2`](https://github.com/anaticulae/pagenumber/commit/f9f3fe272cd7361cd37af8260179b327426c9373))
+
 
 ## v0.3.2 (2022-12-05)
 
-### Chore
+### Chores
 
-* upgrade pipeline (2ee874bb50f6)
-* upgrade requirements.txt (cba304bd4053)
+- **Jenkins**: Upgrade pipeline
+  ([`2ee874b`](https://github.com/anaticulae/pagenumber/commit/2ee874bb50f6b26095255595a5f62421d3ab5277))
+
+- **requirements**: Upgrade requirements.txt
+  ([`cba304b`](https://github.com/anaticulae/pagenumber/commit/cba304bd40534426f56d0ae3427fb162ec6b89d9))
+
+### Refactoring
+
+- **replace**: Automated replacement
+  ([`6115c14`](https://github.com/anaticulae/pagenumber/commit/6115c148c6c42b55371de19fe571720e848207c7))
+
 
 ## v0.3.1 (2022-11-05)
 
-### Fix
+### Bug Fixes
 
-* adjust numbers loader (42e8da9c7a1a)
+- **numbers**: Adjust numbers loader
+  ([`42e8da9`](https://github.com/anaticulae/pagenumber/commit/42e8da9c7a1a2fbb0eec8c4955ae3a4f58b42f00))
 
-### Chore
+### Chores
 
-* upgrade requirements.txt (d1f0261c0b40)
+- **requirements**: Upgrade requirements.txt
+  ([`d1f0261`](https://github.com/anaticulae/pagenumber/commit/d1f0261c0b4042190b0645323662e5afcbeaae22))
+
+### Testing
+
+- **validate**: Verify pagenumber cleanup
+  ([`ea5bf76`](https://github.com/anaticulae/pagenumber/commit/ea5bf76b6574325f0bbc7db00306df1d65d30e1e))
+
 
 ## v0.3.0 (2022-11-05)
 
-### Feature
+### Bug Fixes
 
-* enable running pagenumber twice if cleanup was done (792a98b555f8)
+- **result**: Logging result is not required
+  ([`67f242e`](https://github.com/anaticulae/pagenumber/commit/67f242eec5d6d178b20fb19a489960e0f3a6d003))
 
-### Fix
+### Features
 
-* logging result is not required (67f242eec5d6)
+- **fix**: Enable running pagenumber twice if cleanup was done
+  ([`792a98b`](https://github.com/anaticulae/pagenumber/commit/792a98b555f8d5d0487538aa42fe05700de1bc20))
+
+### Refactoring
+
+- **replace**: Automated replacement
+  ([`679a040`](https://github.com/anaticulae/pagenumber/commit/679a04076e39ee4d8de5ec1365871d4e0ac428c8))
+
 
 ## v0.2.3 (2022-11-03)
 
-### Chore
+### Chores
 
-* convert nightly to all (ec296e29ae40)
-* extend test data generator (c494f1331488)
-* upgrade requirements.txt (733dc93b8d1e)
-* upgrade environment (2f468c2b5fa5)
-* do not run in privileged mode (df1538f5abf3)
+- **Jenkins**: Convert nightly to all
+  ([`ec296e2`](https://github.com/anaticulae/pagenumber/commit/ec296e29ae404bb58f196676cdbc544013c9d0d1))
 
-## v0.2.1
+- **Jenkins**: Do not run in privileged mode
+  ([`df1538f`](https://github.com/anaticulae/pagenumber/commit/df1538f5abf31b3104f1b0779a3b261c4abeadde))
 
-### Feature
+- **Jenkins**: Upgrade environment
+  ([`2f468c2`](https://github.com/anaticulae/pagenumber/commit/2f468c2b5fa5dcd1ab259c58eb22a11481200e4a))
 
-* decrease unique rate (dde2752f86bf)
+- **requirements**: Upgrade requirements.txt
+  ([`733dc93`](https://github.com/anaticulae/pagenumber/commit/733dc93b8d1e7c34cf78b2a8dfe32168812e2b6c))
 
-## v0.2.0
+- **resources**: Extend test data generator
+  ([`c494f13`](https://github.com/anaticulae/pagenumber/commit/c494f133148890220dc0569e24258327594d960d))
 
-### Feature
+### Code Style
 
-* extend invalid cluster detector (3c44f033325c)
-* use improved complex pattern (3aa96a97c663)
-* move magic to separate step (bbb9bec23c04)
-* add legacy step to clarify code (3aee92c7cc8d)
+- **changelog**: Adjust for automation tool
+  ([`94b7572`](https://github.com/anaticulae/pagenumber/commit/94b7572cdb12f7a4491dd5ed79cde85f333b87fd))
 
-### Fix
+### Refactoring
 
-* fix little gap (a8d712288be1)
+- **replace**: Automated replacement
+  ([`b53c73d`](https://github.com/anaticulae/pagenumber/commit/b53c73d999f9a4716e0586296bb253f9e51d295a))
 
-## v0.1.0
 
-### Feature
+## v0.2.2 (2022-09-28)
 
-* move code from groupme (7c474225c346)
+### Chores
 
-## v0.0.0 Initial release
+- **ci**: Add Jenkinsfile
+  ([`d8a9dd2`](https://github.com/anaticulae/pagenumber/commit/d8a9dd206b2ff7c6272a38831d8db3d10be974a8))
+
+- **Jenkinsfile**: Require opengl to generate data
+  ([`f42c166`](https://github.com/anaticulae/pagenumber/commit/f42c166f6ab4d3ced5bf033d768e7bbaa4d640cb))
+
+- **requirements**: Upgrade requirements.txt
+  ([`76eb853`](https://github.com/anaticulae/pagenumber/commit/76eb853d70479b3b7bbd1cedeff3eb909b590742))
+
+- **resources**: Add missing test data generator
+  ([`d403ea7`](https://github.com/anaticulae/pagenumber/commit/d403ea7225fdbde09f7aa499decc537d1873cb2a))
+
+- **resources**: Extend test data generator
+  ([`b2fdb18`](https://github.com/anaticulae/pagenumber/commit/b2fdb184d5ceac077ef8e43f27f61588fd5b01fc))
+
+- **test**: Increase worker count on CI
+  ([`26faa4e`](https://github.com/anaticulae/pagenumber/commit/26faa4e80961fac6d49037fe1708d83bd4dfbb71))
+
+### Testing
+
+- **bachelor085**: Adjust test after upgrading pdfminer
+  ([`de5e0fa`](https://github.com/anaticulae/pagenumber/commit/de5e0fa5cef1b8077f33646110f529421f26c6a9))
+
+- **fixture**: Skip test if data is not generated
+  ([`a669f07`](https://github.com/anaticulae/pagenumber/commit/a669f07d8818fcda05de42b99482cff6a6473ee3))
+
+
+## v0.2.1 (2022-07-18)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`ec119d9`](https://github.com/anaticulae/pagenumber/commit/ec119d92075bb901e60842bd2087a3970b023914))
+
+- **resources**: Extend test data generator
+  ([`7e66c54`](https://github.com/anaticulae/pagenumber/commit/7e66c54ce34e0360ea3649325809d952ed3fd54e))
+
+- **resources**: Extend test data generator
+  ([`01ad8c3`](https://github.com/anaticulae/pagenumber/commit/01ad8c34c5918f417e14f0fc0db75747cf48a4d4))
+
+### Features
+
+- **numbers**: Decrease unique rate
+  ([`dde2752`](https://github.com/anaticulae/pagenumber/commit/dde2752f86bfc974a717205cdbdf03dd6326d77d))
+
+### Refactoring
+
+- **numbers**: Reduce complexity
+  ([`083ef9e`](https://github.com/anaticulae/pagenumber/commit/083ef9e0a75d5184ce4d2f832e814909a418b847))
+
+
+## v0.2.0 (2022-07-15)
+
+### Bug Fixes
+
+- **numbers**: Fix little gap
+  ([`a8d7122`](https://github.com/anaticulae/pagenumber/commit/a8d712288be14860365d8a7e176d30593d1466ff))
+
+### Chores
+
+- **requirements**: Cleanup requirements
+  ([`4f9c369`](https://github.com/anaticulae/pagenumber/commit/4f9c369ace0db7ddcd6f514c79054b5c6e7c3ed3))
+
+- **resources**: Extend test data generator
+  ([`43dd556`](https://github.com/anaticulae/pagenumber/commit/43dd556f9c7f10017e7b3f6f40d9e4a5a15559ce))
+
+- **resources**: Extend test data generator
+  ([`20186b0`](https://github.com/anaticulae/pagenumber/commit/20186b0dcc38d0f5c963e50605e42323ff52a4a1))
+
+- **resources**: Extend test data generator
+  ([`5c0fc3a`](https://github.com/anaticulae/pagenumber/commit/5c0fc3a42c4af5c938048fef5a1fdbd95c45333b))
+
+### Code Style
+
+- **spelling**: Fix spelling error
+  ([`6246df9`](https://github.com/anaticulae/pagenumber/commit/6246df90bd886e72e41697d18699cd9c0d1b77ac))
+
+### Features
+
+- **cli**: Add legacy step to clarify code
+  ([`3aee92c`](https://github.com/anaticulae/pagenumber/commit/3aee92c7cc8d5792ea735a54a7fa3ef5ea33ae19))
+
+- **magic**: Move magic to separate step
+  ([`bbb9bec`](https://github.com/anaticulae/pagenumber/commit/bbb9bec23c049fca6d89ab07b210457c2c0685cf))
+
+- **numbers**: Extend invalid cluster detector
+  ([`3c44f03`](https://github.com/anaticulae/pagenumber/commit/3c44f033325cfffafcaf884ed97c671837b24712))
+
+- **numbers**: Use improved complex pattern
+  ([`3aa96a9`](https://github.com/anaticulae/pagenumber/commit/3aa96a97c66328720012e2e3343c8a08a794a125))
+
+### Refactoring
+
+- **numbers**: Convert to real holy value
+  ([`df4dacf`](https://github.com/anaticulae/pagenumber/commit/df4dacf700612a1252db64260a7214c907cbb5b1))
+
+- **numbers**: Improve code style
+  ([`eee3bc6`](https://github.com/anaticulae/pagenumber/commit/eee3bc6a7c25d067528e24e8f93f568b40239d19))
+
+- **result**: Simplify code
+  ([`cc448de`](https://github.com/anaticulae/pagenumber/commit/cc448dee821c3f1923f4a7e5fe00afc896ff6c30))
+
+### Testing
+
+- **refactor**: Use utilatest code
+  ([`88b42c9`](https://github.com/anaticulae/pagenumber/commit/88b42c92ce603b9d5c2323e6dcae6c27babb9daa))
+
+- **rename**: Shorten test name
+  ([`e434f0e`](https://github.com/anaticulae/pagenumber/commit/e434f0ebca3970a3767d2686e12e06130308f611))
+
+- **validate**: Validate all resources
+  ([`4193f1d`](https://github.com/anaticulae/pagenumber/commit/4193f1dc418740843e0462c1233766fe23488adc))
+
+
+## v0.1.0 (2022-07-15)
+
+### Chores
+
+- **requirements**: Move requirements from groupme
+  ([`e78d74a`](https://github.com/anaticulae/pagenumber/commit/e78d74a4a517d4d2116ba7528f13ec3ca65da322))
+
+- **resources**: Shrink resource generation
+  ([`02a49db`](https://github.com/anaticulae/pagenumber/commit/02a49db7bc35b370e9a30981598a5a66d9a501e9))
+
+### Features
+
+- **pages**: Move code from groupme
+  ([`7c47422`](https://github.com/anaticulae/pagenumber/commit/7c474225c3466ef6a9a1ca6329eb822687ef96c8))
+
+### Refactoring
+
+- **rename**: Shorten cli name
+  ([`ef51cc1`](https://github.com/anaticulae/pagenumber/commit/ef51cc1d2b621311c7c1252670308b4a68e4732b))
+
+### Testing
+
+- **move**: Move tests from groupme
+  ([`3c02298`](https://github.com/anaticulae/pagenumber/commit/3c0229828c0edfcc26bd41e399ea6bc59030c125))
+
+
+## v0.0.0 (2022-07-15)
+
+- Initial Release
