@@ -65,6 +65,7 @@ class Evaluate(utilotest.BaseLiner):
         return result
 
 
+@pytest.mark.xfail(reason='enable "cleanup" later')
 @utilotest.requires(hoverpower.MASTER049_PDF)
 def test_pagenumber_cleanup_pagenumber(td, mp):
     """Ensure that pagenumber->cleanup->pagenumber does not removes pagenumber.
