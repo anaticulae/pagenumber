@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-FROM ghcr.io/anaticulae/baw:80681b9
+FROM ghcr.io/anaticulae/baw:80681b9-python
 
 WORKDIR /var/install
 
